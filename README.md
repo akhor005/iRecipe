@@ -1,6 +1,7 @@
 
 ### Summary: Include screen shots or a video of your app highlighting its features
 
+![Simulator Screenshot - iPhone 16 Pro - 2025-02-10 at 22 45 16](https://github.com/user-attachments/assets/b9b3947e-1637-423b-bbd6-3417f018c31a)
 
 
 ### Focus Areas: What specific areas of the project did you prioritize? Why did you choose to focus on these areas?
@@ -21,7 +22,4 @@ All other tradeoffs were simple design decisions. For example, my original idea 
 ### Weakest Part of the Project: What do you think is the weakest part of your project?
 
 The weakest part of my project is the unit testing. My existing tests are functional and intuitive, but I struggled to come up with as many tests as I'd like. Since there are very few computational operations, it's not immediately obvious what to test.
-
-
-### Additional Information: Is there anything else we should know? Feel free to share any insights or constraints you encountered.
 
