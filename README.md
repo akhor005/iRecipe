@@ -15,10 +15,13 @@ I spent roughly 7 hours on this project. I received the instructions Tuesday, an
 
 As far as requirements are concerned, there was only one major tradeoff: I used async/await to fetch the JSON data, but not the images. Async/await works best with URLSession which has a built-in caching mechanism by default. To avoid using that, I fetched data the "old" way which isn't immediately compatible with async/await. On the surface, the app still runs efficiently and as expected.
 
+Another tradeoff/decision was to not cache large images, as they are fetched less frequently (than small images) and take up more space.
+All other tradeoffs were simple design decisions. For example, my original idea was to have the additional recipe details drop down from under the listing, but I chose to use sheets instead for their versatility.
+
 ### Weakest Part of the Project: What do you think is the weakest part of your project?
 
 The weakest part of my project is the unit testing. My existing tests are functional and intuitive, but I struggled to come up with as many tests as I'd like. Since there are very few computational operations, it's not immediately obvious what to test.
-All other tradeoffs were simple design decisions. For example, my original idea was to have the additional recipe details drop down from under the listing, but I chose to use sheets instead for their versatility.
+
 
 ### Additional Information: Is there anything else we should know? Feel free to share any insights or constraints you encountered.
 
