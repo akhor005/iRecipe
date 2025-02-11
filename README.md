@@ -2,10 +2,13 @@
 ### Summary: Include screen shots or a video of your app highlighting its features
 
 Overall usage (search, filter, reload): https://drive.google.com/file/d/1gagl34QzSUBp960CknBA9WK8V-IVtIJw/view?usp=sharing
+
 Image caching (notice the images loading after cache is cleared): https://drive.google.com/file/d/1WooAokqFi8vLMLbx-QjyKwAA-4lX-9NR/view?usp=sharing
+
 Tapping source URL: https://drive.google.com/file/d/1OwdCOToDCa4VbTXk4_B64ywD8ZPNMwZd/view?usp=sharing
 
 Missing key error: https://drive.google.com/file/d/1OtPiJkDh-7AxPI0U3Xqx_ho_P7y24EUU/view?usp=sharing
+
 Empty list: https://drive.google.com/file/d/1xGjhj45gObrAx1kiQBKewyMxIHc0bDva/view?usp=sharing
 
 ### Focus Areas: What specific areas of the project did you prioritize? Why did you choose to focus on these areas?
