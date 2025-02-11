@@ -42,6 +42,7 @@ struct RecipeListView: View {
         return VStack(spacing: 0) {
             TextField("Search recipe name or cuisine", text: $recipeListVM.searchText)
                 .keyboardType(.webSearch)
+                .disableAutocorrection(true)
                 .onSubmit {
                     recipeListVM.querySearch()
                 }
