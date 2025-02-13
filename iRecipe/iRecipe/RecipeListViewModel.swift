@@ -27,19 +27,13 @@ class RecipeListViewModel: ObservableObject {
     func querySearch() {
         self.activeFilterText = self.searchText
     }
-    func fetchRecipes() async {
-        self.fetchErrorMsg = nil
-        clearFilters()
+
+    func decodeData(data: Data) async {
         do {
-            let url = URL(string: "https://d3jbb8n5wk0qxi.cloudfront.net/recipes.json")!
-                //https://d3jbb8n5wk0qxi.cloudfront.net/recipes.json
-                //https://d3jbb8n5wk0qxi.cloudfront.net/recipes-malformed.json
-                //https://d3jbb8n5wk0qxi.cloudfront.net/recipes-empty.json
-            let (data, _) = try await URLSession.shared.data(from: url)
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let decodedResponse = try decoder.decode([String: [Recipe]].self, from: data)
-            self.recipes = decodedResponse["recipes"] ?? [] //recipes assumed to be empty if no "recipes" key
+            self.recipes = decodedResponse["recipes"] ?? []
         } catch let error as DecodingError {
             switch error {
             case .typeMismatch(_, let context):
@@ -63,10 +57,27 @@ class RecipeListViewModel: ObservableObject {
             case .dataCorrupted:
                 self.fetchErrorMsg = "Data corrupted"
             @unknown default:
-                self.fetchErrorMsg = "Unknown error"
+                self.fetchErrorMsg = "Unknown decoding error"
             }
         } catch {
             self.fetchErrorMsg = "Unknown error"
+        }
+    }
+    func loadRecipes() async {
+        self.fetchErrorMsg = nil
+        clearFilters()
+        do {
+            //https://d3jbb8n5wk0qxi.cloudfront.net/recipes.json
+            //https://d3jbb8n5wk0qxi.cloudfront.net/recipes-malformed.json
+            //https://d3jbb8n5wk0qxi.cloudfront.net/recipes-empty.json
+            guard let url = URL(string: "https://d3jbb8n5wk0qxi.cloudfront.net/recipes.json") else {
+                self.fetchErrorMsg = "Invalid URL"
+                return
+            }
+            let (data, _) = try await URLSession.shared.data(from: url)
+            await decodeData(data: data)
+        } catch {
+            self.fetchErrorMsg = "Could not fetch data. Please double check URL."
         }
     }
     func clearImageCache() {

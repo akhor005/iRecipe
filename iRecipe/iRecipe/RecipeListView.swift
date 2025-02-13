@@ -17,7 +17,7 @@ struct RecipeListView: View {
                 HStack {
                     Button() {
                         Task {
-                            await recipeListVM.fetchRecipes()
+                            await recipeListVM.loadRecipes()
                         }
                     } label: {
                         Image(systemName: "arrow.clockwise")
@@ -110,10 +110,10 @@ struct RecipeListView: View {
                 recipeListVM.querySearch()
             }
             .refreshable {
-                await recipeListVM.fetchRecipes()
+                await recipeListVM.loadRecipes()
             }
             .task {
-                await recipeListVM.fetchRecipes()
+                await recipeListVM.loadRecipes()
             }
         }
         .background(Color.backgroundColor)
